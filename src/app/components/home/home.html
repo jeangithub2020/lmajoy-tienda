@@ -1,0 +1,38 @@
+<div class="relative h-screen w-full overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1573408301185-9146fe634ad0?q=80&w=2075" class="w-full h-full object-cover brightness-75 scale-105 animate-zoom-slow">
+    </div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white z-10 text-center px-4">
+        <p class="text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-4 animate-fade-in-down">Nueva Colección 2025</p>
+        <h1 class="text-5xl md:text-7xl font-serif mb-8 animate-fade-in-up">Elegancia Eterna</h1>
+        
+        <button (click)="scrollToSection('catalogo')" class="border border-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 animate-fade-in-up cursor-pointer">
+            Explorar Joyas
+        </button>
+    </div>
+</div>
+
+<section id="catalogo" class="py-10 bg-white scroll-mt-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <app-product-grid></app-product-grid>
+    </div>
+</section>
+
+<section class="py-24 bg-[#F9F8F6]">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="relative h-[600px] group overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=1974" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="p-8 md:p-12">
+            <span class="text-[#D4AF37] text-xs font-bold uppercase tracking-widest mb-4 block">Colección Limitada</span>
+            <h2 class="text-4xl font-serif text-[#1A1A1A] mb-6">El Arte del Oro</h2>
+            <p class="text-gray-500 leading-relaxed mb-8 font-light text-justify">
+                Descubre nuestra selección más exclusiva, donde cada pieza cuenta una historia de artesanía y dedicación.
+            </p>
+            
+            <button (click)="scrollToSection('catalogo')" class="bg-[#1A1A1A] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-all shadow-xl">
+                Descubrir Colección
+            </button>
+        </div>
+    </div>
+</section>

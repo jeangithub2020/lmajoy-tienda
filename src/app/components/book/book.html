@@ -1,0 +1,47 @@
+<div class="min-h-screen bg-[#F9F8F6] py-32 px-4">
+    <div class="max-w-4xl mx-auto bg-white p-10 md:p-16 rounded-xl shadow-lg border border-gray-200">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-3xl font-serif text-[#1A1A1A] mb-2 uppercase tracking-widest">Libro de Reclamaciones</h1>
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-[0.2em]">Hoja de Reclamación Virtual</p>
+            <div class="mt-6 inline-block bg-[#1A1A1A] text-white text-[10px] font-bold px-4 py-2 rounded uppercase tracking-widest">
+                L'MAJOY RUC: 20213089001
+            </div>
+        </div>
+
+        <form class="space-y-8">
+            <div class="border-b border-gray-100 pb-8">
+                <h3 class="font-bold text-sm uppercase tracking-widest text-[#D4AF37] mb-6">1. Identificación del Consumidor</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Nombres Completos" class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none focus:ring-1 focus:ring-[#D4AF37]">
+                    <input type="text" placeholder="DNI / CE" class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none focus:ring-1 focus:ring-[#D4AF37]">
+                    <input type="text" placeholder="Teléfono" class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none focus:ring-1 focus:ring-[#D4AF37]">
+                    <input type="email" placeholder="Correo Electrónico" class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none focus:ring-1 focus:ring-[#D4AF37]">
+                    <input type="text" placeholder="Domicilio" class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none focus:ring-1 focus:ring-[#D4AF37] md:col-span-2">
+                </div>
+            </div>
+
+            <div class="border-b border-gray-100 pb-8">
+                <h3 class="font-bold text-sm uppercase tracking-widest text-[#D4AF37] mb-6">2. Detalle de la Reclamación</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <select class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none text-gray-500">
+                        <option>Tipo: Reclamo (Disconformidad con producto)</option>
+                        <option>Tipo: Queja (Malestar en atención)</option>
+                    </select>
+                    <input type="text" placeholder="Monto Reclamado (S/)" class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none">
+                </div>
+                <textarea rows="5" placeholder="Descripción detallada de los hechos..." class="w-full bg-gray-50 border-none p-4 text-xs font-bold outline-none focus:ring-1 focus:ring-[#D4AF37]"></textarea>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <input type="checkbox" class="w-4 h-4 accent-[#1A1A1A]">
+                <span class="text-[10px] text-gray-500 uppercase font-bold tracking-wide">Declaro que los datos son verdaderos.</span>
+            </div>
+
+            <button type="button" class="w-full bg-[#1A1A1A] text-white py-5 rounded text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-all">
+                Enviar Hoja de Reclamación
+            </button>
+        </form>
+
+    </div>
+</div>

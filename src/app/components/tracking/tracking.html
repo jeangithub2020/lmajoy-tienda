@@ -1,0 +1,60 @@
+<div class="min-h-screen bg-stone-50 py-12 animate-fade-in">
+    <div class="max-w-2xl mx-auto px-4">
+        
+        <a routerLink="/" class="inline-flex items-center gap-2 mb-8 px-5 py-2 bg-white border border-stone-200 rounded-full text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-boho-dark hover:border-boho-dark transition-all duration-300 shadow-sm cursor-pointer group">
+            <span class="group-hover:-translate-x-1 transition-transform">←</span> Volver a la Tienda
+        </a>
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-100">
+            <div class="bg-boho-dark p-8 text-center">
+                <h1 class="font-serif text-3xl text-white mb-2">Rastrea tu Joya</h1>
+                <p class="text-stone-400 text-xs uppercase tracking-widest">Sistema de Logística L' Majoy</p>
+            </div>
+
+            <div class="p-8">
+                <div class="relative flex items-center mb-8">
+                    <input [(ngModel)]="orderId" (keyup.enter)="trackOrder()" type="text" placeholder="Ingresa tu Nº de Pedido (ej: PED-001)" class="w-full border-b-2 border-stone-200 py-4 px-2 text-lg focus:outline-none focus:border-boho-primary transition-colors bg-transparent uppercase tracking-wider text-gray-700 font-bold placeholder-gray-300">
+                    <button (click)="trackOrder()" class="absolute right-0 text-boho-dark hover:text-boho-primary font-bold uppercase text-xs tracking-widest transition-colors">
+                        BUSCAR
+                    </button>
+                </div>
+
+                <div *ngIf="status" class="mt-8 animate-fade-in-up">
+                    <div class="bg-stone-50 rounded-xl p-6 border border-stone-100 mb-6">
+                        <div class="flex justify-between items-center mb-4 border-b border-gray-200 pb-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase">Pedido</span>
+                            <span class="text-sm font-bold text-gray-800">{{ orderId }}</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-400 uppercase">Estado Actual</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-green-100 text-green-700">{{ status }}</span>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-4 border-l-2 border-stone-200 space-y-8 ml-2">
+                        <div class="relative">
+                            <span class="absolute -left-[21px] bg-green-500 w-4 h-4 rounded-full border-2 border-white shadow"></span>
+                            <h4 class="text-sm font-bold text-gray-800">Pedido Confirmado</h4>
+                            <p class="text-xs text-gray-500">Hemos recibido tu orden correctamente.</p>
+                        </div>
+                        <div class="relative" [class.opacity-50]="step < 2">
+                            <span class="absolute -left-[21px] w-4 h-4 rounded-full border-2 border-white shadow transition-colors duration-500" [class.bg-green-500]="step >= 2" [class.bg-gray-300]="step < 2"></span>
+                            <h4 class="text-sm font-bold text-gray-800">En Preparación (Taller)</h4>
+                            <p class="text-xs text-gray-500">Nuestros joyeros están puliendo los detalles.</p>
+                        </div>
+                        <div class="relative" [class.opacity-50]="step < 3">
+                            <span class="absolute -left-[21px] w-4 h-4 rounded-full border-2 border-white shadow transition-colors duration-500" [class.bg-green-500]="step >= 3" [class.bg-gray-300]="step < 3"></span>
+                            <h4 class="text-sm font-bold text-gray-800">En Camino</h4>
+                            <p class="text-xs text-gray-500">Tu joya va en ruta a tu dirección.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="error" class="mt-8 text-center p-4 bg-red-50 rounded-lg border border-red-100 animate-pulse">
+                    <p class="text-red-600 font-bold text-sm">❌ No encontramos ese pedido.</p>
+                    <p class="text-red-400 text-xs mt-1">Verifica el código e intenta nuevamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

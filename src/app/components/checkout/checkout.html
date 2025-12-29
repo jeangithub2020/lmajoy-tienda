@@ -1,0 +1,126 @@
+<div class="min-h-screen bg-[#F9F8F6] pt-32 pb-20 px-6">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-serif text-[#1A1A1A] mb-12 text-center tracking-widest">FINALIZAR COMPRA</h1>
+
+        <div *ngIf="cartItems.length === 0 && !pagoAprobado" class="text-center py-20 bg-white shadow-sm rounded-sm animate-fade-in-up">
+            <p class="text-gray-400 text-sm font-bold uppercase tracking-widest mb-6">Tu bolsa está vacía</p>
+            <a routerLink="/" class="border-b border-black pb-1 text-xs font-bold uppercase tracking-widest hover:text-[#D4AF37] hover:border-[#D4AF37] transition-colors cursor-pointer">
+                Volver al Catálogo
+            </a>
+        </div>
+
+        <div *ngIf="cartItems.length > 0 && !pagoAprobado" class="grid grid-cols-1 lg:grid-cols-2 gap-12 animate-fade-in-up">
+            
+            <div class="space-y-8">
+                <div class="bg-white p-8 shadow-sm rounded-sm border-t-4 border-[#1A1A1A]">
+                    <h3 class="text-lg font-serif mb-6 flex items-center gap-3">
+                        <span class="bg-[#1A1A1A] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-sans">1</span>
+                        Datos de Contacto y Envío
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <input [(ngModel)]="shippingData.nombres" type="text" placeholder="Nombres" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                        <input [(ngModel)]="shippingData.apellidos" type="text" placeholder="Apellidos" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <input [(ngModel)]="shippingData.whatsapp" type="tel" placeholder="WhatsApp / Celular" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                        <input [(ngModel)]="shippingData.email" type="email" placeholder="Correo Electrónico" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                    </div>
+
+                    <div class="mb-4">
+                        <input [(ngModel)]="shippingData.direccion" type="text" placeholder="Dirección Exacta (Calle, Nro, Urb)" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <input [(ngModel)]="shippingData.distrito" type="text" placeholder="Distrito / Ciudad" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                        <input [(ngModel)]="shippingData.referencia" type="text" placeholder="Referencia (Opcional)" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none border border-transparent focus:border-[#D4AF37] transition-colors">
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 shadow-sm rounded-sm border-t-4 border-[#D4AF37]">
+                    <h3 class="text-lg font-serif mb-6 flex items-center gap-3">
+                        <span class="bg-[#D4AF37] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-sans">2</span>
+                        Método de Pago
+                    </h3>
+                    <div class="mb-4 p-4 bg-yellow-50 border border-yellow-100 text-[10px] text-yellow-800 font-bold uppercase tracking-wide flex items-center gap-2">
+                        <span>🔒</span> Pagos seguros encriptados SSL
+                    </div>
+                    <input [(ngModel)]="shippingData.tarjeta" type="text" placeholder="Número de Tarjeta" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none mb-4 focus:border-[#D4AF37] border border-transparent transition-colors">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input [(ngModel)]="shippingData.vencimiento" type="text" placeholder="MM/YY" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none focus:border-[#D4AF37] border border-transparent transition-colors">
+                        <input [(ngModel)]="shippingData.cvv" type="text" placeholder="CVC" class="w-full bg-[#F9F8F6] p-4 text-xs font-bold outline-none focus:border-[#D4AF37] border border-transparent transition-colors">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 shadow-2xl h-fit sticky top-24 rounded-sm">
+                <h3 class="text-lg font-serif mb-6 border-b border-gray-100 pb-4">Tu Pedido</h3>
+                
+                <div class="space-y-6 mb-8 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                    <div *ngFor="let item of cartItems" class="flex justify-between items-start text-xs border-b border-gray-50 pb-4 last:border-0">
+                        <div class="flex items-start gap-4">
+                            <div class="w-16 h-16 rounded overflow-hidden bg-gray-100 shrink-0">
+                                <img [src]="item.image" class="w-full h-full object-cover">
+                            </div>
+                            
+                            <div>
+                                <p class="font-bold text-[#1A1A1A] text-sm mb-1">{{ item.name }}</p>
+                                <p class="text-gray-400 mb-2 text-[10px] uppercase">Precio unitario: S/ {{ item.price }}</p>
+                                
+                                <div class="flex items-center border border-gray-200 rounded w-fit select-none">
+                                    <button type="button" (click)="decreaseQty(item)" class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 text-gray-500 hover:text-red-500 transition-colors font-bold text-lg active:scale-90 transform">-</button>
+                                    
+                                    <span class="w-8 text-center font-bold text-[#1A1A1A]">{{ item.quantity }}</span>
+                                    
+                                    <button type="button" (click)="increaseQty(item)" class="w-8 h-8 flex items-center justify-center hover:bg-gray-100 text-gray-500 hover:text-green-600 transition-colors font-bold text-lg active:scale-90 transform">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <span class="font-bold text-[#1A1A1A] text-sm mt-1">S/ {{ item.price * (item.quantity || 1) | number:'1.2-2' }}</span>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-100 pt-6 space-y-3 mb-8 bg-gray-50 p-4 rounded">
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>Subtotal</span>
+                        <span>S/ {{ total | number:'1.2-2' }}</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>Envío</span>
+                        <span class="text-green-600 font-bold">Gratis</span>
+                    </div>
+                    <div class="flex justify-between text-xl font-serif font-bold text-[#1A1A1A] pt-3 border-t border-gray-200 mt-2">
+                        <span>Total a Pagar</span>
+                        <span>S/ {{ total | number:'1.2-2' }}</span>
+                    </div>
+                </div>
+
+                <button (click)="payNow()" class="w-full bg-[#1A1A1A] text-white py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1 duration-300">
+                    Pagar Ahora
+                </button>
+                
+                <p class="text-[10px] text-gray-400 text-center mt-4">
+                    Al pagar aceptas nuestros <a routerLink="/terms" class="underline hover:text-[#D4AF37]">Términos y Condiciones</a>.
+                </p>
+            </div>
+        </div>
+
+        <div *ngIf="pagoAprobado" class="max-w-md mx-auto text-center py-20 animate-fade-in-up">
+            <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-12 h-12">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+            </div>
+            <h2 class="text-3xl font-serif text-[#1A1A1A] mb-4">¡Gracias por tu compra!</h2>
+            <p class="text-gray-500 text-sm mb-8 px-8">
+                Estamos procesando tu pedido. En breve recibirás un mensaje a tu WhatsApp <strong>{{ shippingData.whatsapp }}</strong> con los detalles del envío.
+            </p>
+            <div class="flex items-center justify-center gap-3">
+                <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-[#1A1A1A]"></div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">Volviendo a la tienda...</p>
+            </div>
+        </div>
+    </div>
+</div>

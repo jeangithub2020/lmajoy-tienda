@@ -1,0 +1,44 @@
+.receipt-container {
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px solid #eee;
+  color: #000;
+  text-align: center;
+}
+
+.divider { margin: 10px 0; }
+.item-row, .total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.barcode {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* ESTO HACE QUE SOLO SE IMPRIMA EL TICKET */
+@media print {
+  body * { visibility: hidden; }
+  #printable-receipt, #printable-receipt * { visibility: visible; }
+  #printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print { display: none; }
+}
+
+.btn-print {
+  margin-top: 20px;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}

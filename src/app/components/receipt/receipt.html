@@ -1,0 +1,30 @@
+<div class="bg-white p-6 border border-gray-200 shadow-sm mx-auto text-left" style="width: 300px; font-family: 'Courier New', monospace; color: #000;">
+  <div class="text-center border-b border-dashed pb-4 mb-4">
+    <h3 class="font-bold text-xl">L' MAJOY</h3>
+    <p class="text-[10px]">Calle 3 La Joya 15221, Lima</p>
+    <p class="text-[10px]">RUC: 20213089001</p>
+  </div>
+
+  <div class="text-[11px] space-y-1">
+    <p>FECHA: {{ fechaActual }}</p>
+    <p>TICKET: #000{{ numOperacion }}</p>
+    <p>CLIENTE: {{ orderData?.cliente }}</p>
+    <p class="border-b border-dashed py-1">----------------------------</p>
+    <div class="flex justify-between font-bold">
+      <span>1x {{ orderData?.name }}</span>
+      <span>S/ {{ orderData?.price }}</span>
+    </div>
+    <p class="border-b border-dashed py-1">----------------------------</p>
+    <div class="flex justify-between text-lg font-bold">
+      <span>TOTAL</span>
+      <span>S/ {{ orderData?.price }}</span>
+    </div>
+    <p class="mt-4 text-center">MÉTODO: {{ orderData?.metodo }}</p>
+  </div>
+
+  <div class="text-center mt-6 border-t border-dashed pt-4">
+    <p class="text-[10px]">¡GRACIAS POR SU COMPRA!</p>
+    <p class="text-[8px] mt-2">viva la elegancia en lmajoy.com</p>
+    <button (click)="imprimir()" class="no-print mt-4 bg-black text-white px-4 py-2 text-[10px] rounded">IMPRIMIR TICKET</button>
+  </div>
+</div>

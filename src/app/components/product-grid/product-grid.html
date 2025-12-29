@@ -1,0 +1,45 @@
+<div class="min-h-[60vh] py-10"> 
+    
+    <h3 class="text-4xl font-serif text-[#1A1A1A] text-center mb-12 tracking-widest animate-fade-in-up">{{ currentTitle }}</h3>
+
+    <div *ngIf="isLoading" class="flex flex-col items-center justify-center h-64 animate-pulse">
+        <div class="w-16 h-16 border-4 border-gray-200 border-t-[#D4AF37] rounded-full animate-spin mb-4"></div>
+        <p class="text-xs text-gray-400 font-bold uppercase tracking-[0.2em]">Cargando Colección...</p>
+    </div>
+
+    <div *ngIf="!isLoading && filteredProducts.length > 0" class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 animate-fade-in-up">
+        
+        <div *ngFor="let product of filteredProducts" class="group cursor-pointer" [routerLink]="['/product', product.id]">
+            <div class="relative overflow-hidden mb-6 bg-[#F9F8F6] aspect-[4/5] shadow-sm group-hover:shadow-md transition-all duration-500">
+                <img [src]="product.image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 mix-blend-multiply">
+                
+                <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="bg-white text-[#1A1A1A] px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-[#1A1A1A] hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300">
+                        Ver Joya
+                    </span>
+                </div>
+
+                <span *ngIf="product.category === 'oferta'" class="absolute top-4 left-4 bg-red-600 text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">
+                    Oferta
+                </span>
+                <span *ngIf="product.category === 'lanzamiento'" class="absolute top-4 left-4 bg-[#1A1A1A] text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">
+                    Nuevo
+                </span>
+            </div>
+
+            <div class="text-center">
+                <h4 class="text-sm font-bold text-[#1A1A1A] mb-2 group-hover:text-[#D4AF37] transition-colors uppercase tracking-wide">{{ product.name }}</h4>
+                <p class="text-sm font-serif text-gray-500">S/ {{ product.price | number:'1.2-2' }}</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="!isLoading && filteredProducts.length === 0" class="text-center py-32 bg-gray-50 rounded-lg">
+        <p class="text-3xl mb-4">💎</p>
+        <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">No se encontraron joyas en esta sección.</p>
+        <button (click)="filterData('', '')" class="mt-6 text-[#D4AF37] border-b border-[#D4AF37] text-xs font-bold uppercase pb-1 hover:text-black hover:border-black transition-colors">
+            Ver todo el catálogo
+        </button>
+    </div>
+</div>

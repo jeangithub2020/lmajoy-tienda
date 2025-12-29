@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-gold: #D4AF37;
+  --color-dark: #1A1A1A;
+}
+
+body { font-family: 'Montserrat', sans-serif; background-color: #FAF9F6; }
+.font-serif { font-family: 'Cinzel', serif; }
+.text-boho-primary { color: var(--color-gold); }
+.bg-boho-dark { background-color: var(--color-dark); }
+.bg-boho-primary { background-color: var(--color-gold); }
+.bg-yape { background-color: #742284; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+@media print {
+  .no-print { display: none !important; }
+}
