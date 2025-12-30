@@ -19,7 +19,7 @@ export interface Product {
 export class ProductService {
   private http = inject(HttpClient);
   // ASEGÚRATE QUE ESTA URL SEA EXACTA (sin espacios al final)
-  private apiUrl = 'http://localhost:3000/api/products';
+  private apiUrl = 'https://lmajoy-tienda-production.up.railway.app/api/products';
   
   private productsCache: Product[] = []; 
   
